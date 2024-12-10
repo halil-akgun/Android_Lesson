@@ -16,5 +16,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // to access xml resources in kotlin
+        val title = R.string.app_name
+        println(title)
     }
 }
