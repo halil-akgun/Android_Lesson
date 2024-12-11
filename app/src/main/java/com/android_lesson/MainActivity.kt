@@ -20,5 +20,7 @@ class MainActivity : AppCompatActivity() {
         // to access xml resources in kotlin
         val title = R.string.app_name
         println(title)
+        val image = R.drawable.info
+        println(image)
     }
 }
