@@ -1,6 +1,7 @@
 package com.android_lesson
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         println(title)
         val image = R.drawable.info
         println(image)
+
+        Log.d("test", "test")
+        Log.e("title", title.toString())
+        Log.e("image", image.toString())
     }
 }
