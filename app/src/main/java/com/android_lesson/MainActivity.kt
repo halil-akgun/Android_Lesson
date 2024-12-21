@@ -2,15 +2,57 @@ package com.android_lesson
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.android_lesson.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
+
+// Importing kotlinx synthetic view binding library (deprecated as of Android's modern standards)
+//import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+
+
+    private lateinit var classicBinding: Button
+    private lateinit var textView: TextView
+
+    private lateinit var viewBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // View Binding
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root) // setContentView(R.layout.activity_main)
+
+        // Classic Binding
+        classicBinding = findViewById(R.id.BTN_ClassicBinding)
+        textView = findViewById(R.id.textView)
+        classicBinding.setOnClickListener {
+            textView.text = "classic binding example"
+            Snackbar.make(it, "classic binding example", Snackbar.LENGTH_SHORT).show()
+        }
+
+        // Synthetic Binding
+        // Note: Synthetic binding is no longer recommended and has been deprecated.
+        // Use View Binding or findViewById instead for better type safety and performance.
+        /*
+                BTN_SyntheticBinding.setOnClickListener {
+                    textView.text = "synthetic binding example"
+                    Snackbar.make(it, "synthetic binding example", Snackbar.LENGTH_SHORT).show()
+                }
+        */
+
+        // View Binding
+        viewBinding.BTNViewBinding.setOnClickListener {
+            textView.text = "view binding example"
+            Snackbar.make(it, "view binding example", Snackbar.LENGTH_SHORT).show()
+        }
+
 
         // This code enables the app to operate in full-screen mode by handling system bar insets
         // and applying appropriate padding to the content view.
