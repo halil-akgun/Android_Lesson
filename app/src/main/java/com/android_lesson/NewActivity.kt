@@ -1,35 +1,20 @@
 package com.android_lesson
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class NewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // This code enables the app to operate in full-screen mode by handling system bar insets
-        // and applying appropriate padding to the content view.
         enableEdgeToEdge()
+        setContentView(R.layout.activity_new)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-        // to access xml resources in kotlin
-        val title = R.string.app_name
-        println(title)
-        val image = R.drawable.info
-        println(image)
-
-        Log.d("test", "test")
-        Log.e("title", title.toString())
-        Log.e("image", image.toString())
     }
 }
