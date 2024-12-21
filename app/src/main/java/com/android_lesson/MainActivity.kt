@@ -16,8 +16,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-
-
     private lateinit var classicBinding: Button
     private lateinit var textView: TextView
 
@@ -70,8 +68,38 @@ class MainActivity : AppCompatActivity() {
         val image = R.drawable.info
         println(image)
 
-        Log.d("test", "test")
-        Log.e("title", title.toString())
-        Log.e("image", image.toString())
+        Log.d("Lifecycle onCreate", "onCreate called")
+    }
+
+    // Lifecycle methods
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("Lifecycle onStart", "onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Lifecycle onResume", "onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Lifecycle onPause", "onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Lifecycle onStop", "onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Lifecycle onDestroy", "onDestroy called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("Lifecycle onRestart", "onRestart called")
     }
 }
