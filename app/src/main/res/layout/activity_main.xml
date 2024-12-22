@@ -70,7 +70,7 @@
         android:layout_width="119dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="33dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="#AD9898"
         android:insetLeft="0dp"
@@ -89,7 +89,7 @@
         android:layout_width="119dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="33dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#E2DDDD"
         android:insetLeft="0dp"
@@ -107,7 +107,7 @@
         android:id="@+id/BTN_SyntheticBinding"
         android:layout_width="119dp"
         android:layout_height="55dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="33dp"
         android:backgroundTint="#BCB8B8"
         android:insetLeft="0dp"
         android:insetTop="0dp"
@@ -119,5 +119,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/BTN_ClassicBinding"
         app:layout_constraintTop_toBottomOf="@+id/textView_Info" />
+
+    <Button
+        android:id="@+id/GoToNewActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="11dp"
+        android:text="go to newA."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

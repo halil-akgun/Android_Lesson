@@ -1,5 +1,6 @@
 package com.android_lesson
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -62,6 +63,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        // Navigate to a new activity when the button is clicked
+        viewBinding.GoToNewActivity.setOnClickListener {
+            val intent = Intent(this@MainActivity, NewActivity::class.java)
+            startActivity(intent)
+        }
+
+
         // to access xml resources in kotlin
         val title = R.string.app_name
         println(title)
@@ -70,6 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("Lifecycle onCreate", "onCreate called")
     }
+
 
     // Lifecycle methods
 
