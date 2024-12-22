@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -67,6 +69,21 @@ class MainActivity : AppCompatActivity() {
         viewBinding.GoToNewActivity.setOnClickListener {
             val intent = Intent(this@MainActivity, NewActivity::class.java)
             startActivity(intent)
+        }
+
+
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this) {
+            val builder = AlertDialog.Builder(this@MainActivity)
+            builder.setTitle("Exit")
+            builder.setMessage("Do you want to close the application?")
+            builder.setPositiveButton("Yes") { _, _ ->
+                finish()
+            }
+            builder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            builder.create().show()
         }
 
 
