@@ -2,6 +2,7 @@ package com.android_lesson
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,6 +29,12 @@ class NewActivity : AppCompatActivity() {
         // data sending from one activity to another
         viewBinding.button11.setOnClickListener {
             val intent = Intent(this@NewActivity, NewActivity2::class.java)
+            val name = viewBinding.editTextText.text.toString()
+            val age = viewBinding.editTextNumber.text.toString().toInt()
+//            intent.putExtra("name", name)
+//            intent.putExtra("age", age)
+            val person = Person(name, age)
+            intent.putExtra("person", person)
             startActivity(intent)
         }
 
