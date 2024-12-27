@@ -30,10 +30,10 @@ class NewActivity : AppCompatActivity() {
         viewBinding.button11.setOnClickListener {
             val intent = Intent(this@NewActivity, NewActivity2::class.java)
             val name = viewBinding.editTextText.text.toString()
-            val age = viewBinding.editTextNumber.text.toString().toInt()
+            val age = viewBinding.editTextNumber.text.toString().toIntOrNull()
 //            intent.putExtra("name", name)
 //            intent.putExtra("age", age)
-            val person = Person(name, age)
+            val person = Person(name, age ?: 0)
             intent.putExtra("person", person)
             startActivity(intent)
         }

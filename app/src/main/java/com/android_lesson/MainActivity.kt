@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // Navigate to a new activity when the button is clicked
-        viewBinding.GoToNewActivity.setOnClickListener {
+        viewBinding.GoToB.setOnClickListener {
             val intent = Intent(this@MainActivity, NewActivity::class.java)
             startActivity(intent)
         }
