@@ -7,16 +7,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.android_lesson.databinding.ActivityNew2Binding
+import com.android_lesson.databinding.ActivityCBinding
 
-class NewActivity2 : AppCompatActivity() {
+class CActivity : AppCompatActivity() {
 
-    private lateinit var viewBinding: ActivityNew2Binding
+    private lateinit var viewBinding: ActivityCBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        viewBinding = ActivityNew2Binding.inflate(layoutInflater)
+        viewBinding = ActivityCBinding.inflate(layoutInflater)
         setContentView(viewBinding.root) // setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -26,7 +26,7 @@ class NewActivity2 : AppCompatActivity() {
 
         // Navigate to a new activity when the button is clicked
         viewBinding.goToD.setOnClickListener {
-            val intent = Intent(this@NewActivity2, NewActivity3::class.java)
+            val intent = Intent(this@CActivity, DActivity::class.java)
             startActivity(intent)
         }
 
