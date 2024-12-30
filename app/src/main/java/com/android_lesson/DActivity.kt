@@ -30,7 +30,7 @@ class DActivity : AppCompatActivity() {
             val intent = Intent(this@DActivity, EActivity::class.java)
             // This method closes the current activity and removes it from the back stack,
             // ensuring the user cannot return to it using the back button.
-            // when user presses back button on page E, it will go back to page C
+            // when user presses back button on page E, it will go back to page C.
             finish()
 
 //            Toast.makeText(this, "Page D finished and removed from back stack", Toast.LENGTH_LONG).show()
