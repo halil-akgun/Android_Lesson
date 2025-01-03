@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/game1HomeFragment">
+
+    <fragment
+        android:id="@+id/game1HomeFragment"
+        android:name="com.android_lesson.Game1HomeFragment"
+        android:label="fragment_game1_home"
+        tools:layout="@layout/fragment_game1_home" />
+    <fragment
+        android:id="@+id/game2StartFragment"
+        android:name="com.android_lesson.Game2StartFragment"
+        android:label="fragment_game2_start"
+        tools:layout="@layout/fragment_game2_start" />
+    <fragment
+        android:id="@+id/game3ResultFragment"
+        android:name="com.android_lesson.Game3ResultFragment"
+        android:label="fragment_game3_result"
+        tools:layout="@layout/fragment_game3_result" />
+</navigation>
