@@ -9,12 +9,20 @@
         android:id="@+id/game1HomeFragment"
         android:name="com.android_lesson.Game1HomeFragment"
         android:label="fragment_game1_home"
-        tools:layout="@layout/fragment_game1_home" />
+        tools:layout="@layout/fragment_game1_home" >
+        <action
+            android:id="@+id/toGameFragment"
+            app:destination="@id/game2StartFragment" />
+    </fragment>
     <fragment
         android:id="@+id/game2StartFragment"
         android:name="com.android_lesson.Game2StartFragment"
         android:label="fragment_game2_start"
-        tools:layout="@layout/fragment_game2_start" />
+        tools:layout="@layout/fragment_game2_start" >
+        <action
+            android:id="@+id/toResultFragment"
+            app:destination="@id/game3ResultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/game3ResultFragment"
         android:name="com.android_lesson.Game3ResultFragment"

@@ -5,15 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.android_lesson.databinding.FragmentGame1HomeBinding
 
 class Game1HomeFragment : Fragment() {
+
+    private lateinit var binding: FragmentGame1HomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_game1_home, container, false)
+    ): View {
+        binding = FragmentGame1HomeBinding.inflate(inflater, container, false)
 
-        return view
+        binding.button18.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toGameFragment)
+        }
+
+        return binding.root
     }
 }

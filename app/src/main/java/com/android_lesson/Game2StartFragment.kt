@@ -5,14 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.android_lesson.databinding.FragmentGame2StartBinding
 
 class Game2StartFragment : Fragment() {
+
+    private lateinit var binding: FragmentGame2StartBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_game2_start, container, false)
-        return view
+    ): View {
+        binding = FragmentGame2StartBinding.inflate(inflater, container, false)
+
+        binding.button19.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toResultFragment)
+        }
+
+        return binding.root
     }
 }
