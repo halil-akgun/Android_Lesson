@@ -21,7 +21,9 @@
         tools:layout="@layout/fragment_game2_start" >
         <action
             android:id="@+id/toResultFragment"
-            app:destination="@id/game3ResultFragment" />
+            app:destination="@id/game3ResultFragment"
+            app:popUpTo="@id/game2StartFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/game3ResultFragment"
