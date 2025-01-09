@@ -19,7 +19,15 @@ class Game1HomeFragment : Fragment() {
         binding = FragmentGame1HomeBinding.inflate(inflater, container, false)
 
         binding.button18.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.toGameFragment)
+
+            // data sending from one fragment to another
+//            val action = Game1HomeFragmentDirections.toGameFragment("Veerle", 29, true)
+            val action = Game1HomeFragmentDirections
+                .toGameFragment(Person("Veerle", 29), "Veerle", 29, true)
+
+            // Navigating to the GameFragment with the action defined above
+            Navigation.findNavController(it).navigate(action)
+//            Navigation.findNavController(it).navigate(R.id.toGameFragment)
         }
 
         return binding.root

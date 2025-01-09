@@ -28,6 +28,21 @@
             app:destination="@id/game3ResultFragment"
             app:popUpTo="@id/game2StartFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="no name" />
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="isAdult"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="Person"
+            app:argType="com.android_lesson.Person" />
     </fragment>
     <fragment
         android:id="@+id/game3ResultFragment"
