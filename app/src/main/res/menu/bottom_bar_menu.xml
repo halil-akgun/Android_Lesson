@@ -3,6 +3,10 @@
 
     <item
         android:id="@+id/game1HomeFragment"
+        android:icon="@drawable/home_24"
         android:title="Home" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/game3ResultFragment"
+        android:icon="@drawable/result_24"
+        android:title="Result" />
 </menu>
