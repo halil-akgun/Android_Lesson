@@ -20,7 +20,7 @@ class Game1HomeFragment : Fragment() {
 
         binding.button18.setOnClickListener {
 
-            // data sending from one fragment to another
+            // Data sending from one fragment to another
 //            val action = Game1HomeFragmentDirections.toGameFragment("Veerle", 29, true)
             val action = Game1HomeFragmentDirections
                 .toGameFragment(Person("Veerle", 29), "Veerle", 29, true)
