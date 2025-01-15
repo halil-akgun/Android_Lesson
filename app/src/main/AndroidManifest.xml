@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Android_Lesson"
         tools:targetApi="31">
         <activity
+            android:name=".FActivity"
+            android:exported="false" />
+        <activity
             android:name=".EActivity"
             android:exported="false" />
         <activity
