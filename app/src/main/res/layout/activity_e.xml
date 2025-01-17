@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".EActivity">
 
+    <Button
+        android:id="@+id/goToF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="11dp"
+        android:text="go to F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"

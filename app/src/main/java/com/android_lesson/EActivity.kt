@@ -1,5 +1,6 @@
 package com.android_lesson
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,5 +34,11 @@ class EActivity : AppCompatActivity() {
             viewBinding.bottomNav,
             navHostFragment.navController
         )
+
+        // Navigate to a new activity when the button is clicked
+        viewBinding.goToF.setOnClickListener {
+            val intent = Intent(this@EActivity, FActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
