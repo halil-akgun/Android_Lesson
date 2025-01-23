@@ -2,6 +2,7 @@ package com.android_lesson
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,16 +24,36 @@ class BActivity : AppCompatActivity() {
             insets
         }
 
+        viewBinding.switch1.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.e("BActivity", "Agree")
+            } else {
+                Log.e("BActivity", "Disagree")
+            }
+        }
+
+        viewBinding.toggleButton.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.e("BActivity", "Adult")
+            } else {
+                Log.e("BActivity", "Child")
+            }
+        }
+
 
         // data sending from one activity to another
         viewBinding.button11.setOnClickListener {
             val intent = Intent(this@BActivity, CActivity::class.java)
             val name = viewBinding.editTextText.text.toString()
             val age = viewBinding.editTextNumber.text.toString().toIntOrNull()
+            val isAdult = viewBinding.toggleButton.isChecked
+            val isAgree = viewBinding.switch1.isChecked
 //            intent.putExtra("name", name)
 //            intent.putExtra("age", age)
             val person = Person(name, age ?: 0)
             intent.putExtra("person", person)
+            Log.e("BActivity", "isAdult: $isAdult")
+            Log.e("BActivity", "isAgree: $isAgree")
             startActivity(intent)
         }
 
