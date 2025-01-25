@@ -40,6 +40,30 @@ class BActivity : AppCompatActivity() {
             }
         }
 
+        viewBinding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.e("BActivity", "Checkbox Checked")
+            } else {
+                Log.e("BActivity", "Checkbox Unchecked")
+            }
+        }
+
+        viewBinding.radioButton.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.e("BActivity", "RadioButton Checked")
+            } else {
+                Log.e("BActivity", "RadioButton Unchecked")
+            }
+        }
+
+        viewBinding.radioButton2.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Log.e("BActivity", "RadioButton2 Checked")
+            } else {
+                Log.e("BActivity", "RadioButton2 Unchecked")
+            }
+        }
+
 
         // data sending from one activity to another
         viewBinding.button11.setOnClickListener {
@@ -48,12 +72,18 @@ class BActivity : AppCompatActivity() {
             val age = viewBinding.editTextNumber.text.toString().toIntOrNull()
             val isAdult = viewBinding.toggleButton.isChecked
             val isAgree = viewBinding.switch1.isChecked
+            val checkbox = viewBinding.checkBox.isChecked
+            val radioButton = viewBinding.radioButton.isChecked
+            val radioButton2 = viewBinding.radioButton2.isChecked
 //            intent.putExtra("name", name)
 //            intent.putExtra("age", age)
             val person = Person(name, age ?: 0)
             intent.putExtra("person", person)
             Log.e("BActivity", "isAdult: $isAdult")
             Log.e("BActivity", "isAgree: $isAgree")
+            Log.e("BActivity", "checkbox: $checkbox")
+            Log.e("BActivity", "radioButton: $radioButton")
+            Log.e("BActivity", "radioButton2: $radioButton2")
             startActivity(intent)
         }
 
