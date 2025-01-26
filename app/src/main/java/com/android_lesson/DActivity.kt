@@ -2,6 +2,7 @@ package com.android_lesson
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
@@ -49,6 +50,29 @@ class DActivity : AppCompatActivity() {
             // This is useful for navigating back to a previous activity and clearing intermediate ones.
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+        }
+
+
+        // progress bar
+        viewBinding.progressStart.setOnClickListener {
+            viewBinding.progressBar.visibility = android.view.View.VISIBLE
+            viewBinding.progressFinish.setOnClickListener {
+                viewBinding.progressBar.visibility = android.view.View.INVISIBLE
+            }
+        }
+
+        viewBinding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewBinding.textView12.text = "Progress: $progress"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
+        viewBinding.button22.setOnClickListener {
+            val progress = viewBinding.seekBar.progress
+            val rating = viewBinding.ratingBar.rating
+            Toast.makeText(this, "Progress: $progress, Rating: $rating", Toast.LENGTH_SHORT).show()
         }
     }
 }
