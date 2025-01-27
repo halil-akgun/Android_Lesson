@@ -39,5 +39,16 @@ class CActivity : AppCompatActivity() {
         val text = "${person.name} (${person.age})"
         val textView = findViewById<TextView>(R.id.textView3)
         textView.text = text
+
+        // enable javaScript
+        viewBinding.webView.settings.javaScriptEnabled = true
+
+        viewBinding.btnHerkul.setOnClickListener {
+            viewBinding.webView.loadUrl("https://herkul.org")
+        }
+
+        viewBinding.btnGoogle.setOnClickListener {
+            viewBinding.webView.loadUrl("https://www.google.com")
+        }
     }
 }
