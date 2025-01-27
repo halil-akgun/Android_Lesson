@@ -2,16 +2,22 @@ package com.android_lesson
 
 import android.content.Intent
 import android.os.Bundle
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityCBinding
 
+
 class CActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityCBinding
+    private lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +47,39 @@ class CActivity : AppCompatActivity() {
         textView.text = text
 
         // enable javaScript
-        viewBinding.webView.settings.javaScriptEnabled = true
+//        viewBinding.webView.settings.javaScriptEnabled = true
+
+
+        // Define the WebView
+        webView = findViewById(R.id.webView)
+        val webSettings: WebSettings = webView.settings
+
+        // enable javaScript
+        webSettings.javaScriptEnabled = true
+
+        // Add a WebViewClient (for redirect control)
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                view?.loadUrl(url ?: "")
+                return true // Keep the redirect inside the WebView
+            }
+        }
 
         viewBinding.btnHerkul.setOnClickListener {
-            viewBinding.webView.loadUrl("https://herkul.org")
+            webView.loadUrl("https://herkul.org")
         }
 
         viewBinding.btnGoogle.setOnClickListener {
-            viewBinding.webView.loadUrl("https://www.google.com")
+            webView.loadUrl("https://www.google.com")
+        }
+
+        // Handle back button press
+        onBackPressedDispatcher.addCallback(this) {
+            if (webView.canGoBack()) {
+                webView.goBack() // Go to the previous page in the WebView
+            } else {
+                super.onBackPressed() // Normal back button behavior
+            }
         }
     }
 }
