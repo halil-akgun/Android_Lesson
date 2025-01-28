@@ -71,6 +71,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // imageview
+        viewBinding.btnImg1.setOnClickListener {
+            viewBinding.imageView3.setImageResource(R.drawable.img)
+        }
+        viewBinding.btnImg2.setOnClickListener {
+//            viewBinding.imageView3.setImageResource(R.drawable.info)
+            viewBinding.imageView3.setImageResource(
+                resources.getIdentifier(
+                    "info",
+                    "drawable",
+                    packageName
+                )
+                // Use getIdentifier only if the resource name is dynamic;
+                // otherwise, prefer R.drawable for better performance and safety.
+            )
+        }
+
 
         // Handle back button press
         onBackPressedDispatcher.addCallback(this) {
