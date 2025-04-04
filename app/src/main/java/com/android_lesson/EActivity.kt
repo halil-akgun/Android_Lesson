@@ -40,5 +40,9 @@ class EActivity : AppCompatActivity() {
             val intent = Intent(this@EActivity, FActivity::class.java)
             startActivity(intent)
         }
+        viewBinding.goToG.setOnClickListener {
+            val intent = Intent(this@EActivity, GActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
