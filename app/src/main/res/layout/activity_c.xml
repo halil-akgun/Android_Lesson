@@ -39,26 +39,35 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnHerkul"
-        android:layout_width="83dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Herkul"
-        app:layout_constraintBottom_toTopOf="@+id/webView"
-        app:layout_constraintEnd_toStartOf="@+id/btnGoogle"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/btnHerkul"
+            android:layout_width="83dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Herkul"
+            app:layout_constraintBottom_toTopOf="@+id/webView"
+            app:layout_constraintEnd_toStartOf="@+id/btnGoogle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp" />
 
     <Button
-        android:id="@+id/btnGoogle"
-        android:layout_width="83dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Google"
-        app:layout_constraintBottom_toTopOf="@+id/webView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnHerkul" />
+            android:id="@+id/btnGoogle"
+            android:layout_width="83dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Google"
+            app:layout_constraintBottom_toTopOf="@+id/webView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnHerkul"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:textAlignment="center" />
 
     <TextView
         android:id="@+id/textView3"

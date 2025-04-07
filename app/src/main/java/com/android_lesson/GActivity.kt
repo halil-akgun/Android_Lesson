@@ -1,5 +1,6 @@
 package com.android_lesson
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -33,6 +34,12 @@ class GActivity : AppCompatActivity() {
 
         viewBinding.stopVideo.setOnClickListener {
             viewBinding.videoView.stopPlayback()
+        }
+
+        // Navigate to a new activity when the button is clicked
+        viewBinding.goToH.setOnClickListener {
+            val intent = Intent(this@GActivity, HActivity::class.java)
+            startActivity(intent)
         }
     }
 }
