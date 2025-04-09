@@ -1,5 +1,7 @@
 package com.android_lesson
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityBBinding
+import java.util.Calendar
 
 class BActivity : AppCompatActivity() {
 
@@ -62,6 +65,35 @@ class BActivity : AppCompatActivity() {
             } else {
                 Log.e("BActivity", "RadioButton2 Unchecked")
             }
+        }
+
+        viewBinding.editTextDate.setOnClickListener {
+            val calender = Calendar.getInstance()
+            val year = calender.get(Calendar.YEAR)
+            val month = calender.get(Calendar.MONTH)
+            val day = calender.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, { _, year, month, day ->
+                viewBinding.editTextDate.setText("$year-${month + 1}-$day")
+            }, year, month, day)
+            datePickerDialog.setTitle("Select Date")
+            datePickerDialog.setButton(DatePickerDialog.BUTTON_POSITIVE, "OK", datePickerDialog)
+            datePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Cancel", datePickerDialog)
+            datePickerDialog.show()
+        }
+
+        viewBinding.editTextTime.setOnClickListener {
+            val calender = Calendar.getInstance()
+            val hour = calender.get(Calendar.HOUR_OF_DAY)
+            val minute = calender.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(this, { _, hour, minute ->
+                viewBinding.editTextTime.setText("$hour:$minute")
+            }, hour, minute, true)
+            timePickerDialog.setTitle("Select Time")
+            timePickerDialog.setButton(TimePickerDialog.BUTTON_POSITIVE, "OK", timePickerDialog)
+            timePickerDialog.setButton(TimePickerDialog.BUTTON_NEGATIVE, "Cancel", timePickerDialog)
+            timePickerDialog.show()
         }
 
 
