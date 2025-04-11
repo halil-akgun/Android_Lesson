@@ -41,10 +41,15 @@ class CActivity : AppCompatActivity() {
 //        val name = intent.getStringExtra("name")
 //        val age = intent.getIntExtra("age", 0)
 //        val text = "$name ($age)"
-        val person = intent.getSerializableExtra("person") as Person
-        val text = "${person.name} (${person.age})"
-        val textView = findViewById<TextView>(R.id.textView3)
-        textView.text = text
+        val person = intent.getSerializableExtra("person") as? Person
+        if (person != null) {
+            val text = "${person.name} (${person.age})"
+            val textView = findViewById<TextView>(R.id.textView3)
+            textView.text = text
+        } else {
+            val textView = findViewById<TextView>(R.id.textView3)
+            textView.text = "No user information received."
+        }
 
         // enable javaScript
 //        viewBinding.webView.settings.javaScriptEnabled = true
