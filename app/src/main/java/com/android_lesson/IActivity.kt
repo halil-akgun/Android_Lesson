@@ -58,7 +58,7 @@ class IActivity : AppCompatActivity() {
         }
 
         viewBinding.buttonSpinnerShow.setOnClickListener {
-            Toast.makeText(applicationContext, "You selected ${countries[viewBinding.spinner.selectedItemPosition]}", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "You selected: ${countries[viewBinding.spinner.selectedItemPosition]}", Toast.LENGTH_LONG).show()
         }
     }
 }
