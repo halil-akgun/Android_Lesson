@@ -7,4 +7,49 @@
         android:layout_height="match_parent"
         tools:context=".MActivity">
 
+    <TextView
+            android:text="Hello World!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_darkMode"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="65dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_darkMode"
+            android:textColor="@color/textColor" />
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/img"
+            android:id="@+id/imageView_darkMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="52dp" />
+
+    <Button
+            android:text="Night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_darkMode_night"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="@color/buttonColor" />
+
+    <Button
+            android:text="Not Night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_darkMode_notNight"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="@color/buttonColor" />
 </androidx.constraintlayout.widget.ConstraintLayout>
