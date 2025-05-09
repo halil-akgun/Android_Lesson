@@ -19,14 +19,16 @@ class FActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewBinding = ActivityFBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activityF)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        // NOTE: The code below overrides status bar styling — remove it to apply custom status bar colors.
+//        enableEdgeToEdge()
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activityF)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Find the NavHostFragment from the fragmentContainerView
         val navHostFragment =

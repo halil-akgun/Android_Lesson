@@ -14,14 +14,16 @@ class AIndexActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         viewBinding = ActivityAindexBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        // NOTE: The code below overrides status bar styling — remove it to apply custom status bar colors.
+//        enableEdgeToEdge()
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Navigate to a new activity when the button is clicked
         viewBinding.mainGoToA.setOnClickListener {
@@ -78,6 +80,10 @@ class AIndexActivity : AppCompatActivity() {
         }
         viewBinding.mainGoToN.setOnClickListener {
             val intent = Intent(this@AIndexActivity, NActivity::class.java)
+            startActivity(intent)
+        }
+        viewBinding.mainGoToO.setOnClickListener {
+            val intent = Intent(this@AIndexActivity, OActivity::class.java)
             startActivity(intent)
         }
     }
