@@ -1,16 +1,18 @@
 package com.android_lesson
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityOBinding
 
-class OActivity : AppCompatActivity() {
+class OActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private lateinit var viewBinding: ActivityOBinding
 
@@ -31,6 +33,11 @@ class OActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
+
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.setOnQueryTextListener(this)
+
         return true
     }
 
@@ -56,7 +63,23 @@ class OActivity : AppCompatActivity() {
                 return true
             }
 
+            R.id.action_search -> {
+                Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.e("onQueryTextSubmit", query.toString())
+        Toast.makeText(this, "Search: $query", Toast.LENGTH_SHORT).show()
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.e("onQueryTextChange", newText.toString())
+        return true
     }
 }

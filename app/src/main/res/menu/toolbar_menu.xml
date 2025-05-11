@@ -12,6 +12,12 @@
             android:id="@+id/action_add"
             app:showAsAction="ifRoom" />
     <item
+            android:title="Search"
+            android:id="@+id/action_search"
+            android:icon="@drawable/search_24"
+            app:actionViewClass="androidx.appcompat.widget.SearchView"
+            app:showAsAction="always|collapseActionView" />
+    <item
             android:title="Settings"
             android:id="@+id/action_settings" />
     <item
