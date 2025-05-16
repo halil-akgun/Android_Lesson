@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -45,6 +46,25 @@ class P_RVAdapter(private val mContext: Context, private val countries: List<P_C
         holder.rowTextView.text = country.name
         holder.rowCardView.setOnClickListener {
             Toast.makeText(mContext, "Selected: ${country.name}", Toast.LENGTH_SHORT).show()
+        }
+        holder.moreImg.setOnClickListener {
+            val popupMenu = PopupMenu(mContext, holder.moreImg)
+            popupMenu.menuInflater.inflate(R.menu.p_cardview_popupmenu, popupMenu.menu)
+            popupMenu.show()
+
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_edit -> {
+                        Toast.makeText(mContext, "Edit ${country.name}", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_delete -> {
+                        Toast.makeText(mContext, "Delete ${country.name}", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
     }
 }
