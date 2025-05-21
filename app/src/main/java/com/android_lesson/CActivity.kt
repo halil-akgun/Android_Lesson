@@ -1,7 +1,9 @@
 package com.android_lesson
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -12,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityCBinding
+import androidx.core.content.edit
 
 
 class CActivity : AppCompatActivity() {
@@ -50,6 +53,42 @@ class CActivity : AppCompatActivity() {
             val textView = findViewById<TextView>(R.id.textView3)
             textView.text = "No user information received."
         }
+
+        //         *****  SHARED PREFERENCES *****
+        // reach shared preferences
+        val sharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+        var name = sharedPreferences.getString("name", "name not found")
+        var age = sharedPreferences.getInt("age", 0)
+        var isAdult = sharedPreferences.getBoolean("isAdult", false)
+        var isAgree = sharedPreferences.getBoolean("isAgree", false)
+        var friendList = sharedPreferences.getStringSet("friends", emptySet())
+
+        Log.e("SharedPreferences", "Name: $name")
+        Log.e("SharedPreferences", "Age: $age")
+        Log.e("SharedPreferences", "Is Adult: $isAdult")
+        Log.e("SharedPreferences", "Is Agree: $isAgree")
+        Log.e("SharedPreferences", "Friend List: $friendList")
+
+        // remove shared preferences
+        sharedPreferences.edit {
+            remove("name")
+            remove("age")
+            remove("isAdult")
+            remove("isAgree")
+            remove("friends")
+        }
+        name = sharedPreferences.getString("name", "name not found")
+        age = sharedPreferences.getInt("age", 0)
+        isAdult = sharedPreferences.getBoolean("isAdult", false)
+        isAgree = sharedPreferences.getBoolean("isAgree", false)
+        friendList = sharedPreferences.getStringSet("friends", emptySet())
+        Log.e("SharedPreferences", "Name: $name")
+        Log.e("SharedPreferences", "Age: $age")
+        Log.e("SharedPreferences", "Is Adult: $isAdult")
+        Log.e("SharedPreferences", "Is Agree: $isAgree")
+        Log.e("SharedPreferences", "Friend List: $friendList")
+
+
 
         // enable javaScript
 //        viewBinding.webView.settings.javaScriptEnabled = true

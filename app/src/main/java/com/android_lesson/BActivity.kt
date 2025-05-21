@@ -2,11 +2,13 @@ package com.android_lesson
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityBBinding
@@ -116,6 +118,29 @@ class BActivity : AppCompatActivity() {
             Log.e("BActivity", "checkbox: $checkbox")
             Log.e("BActivity", "radioButton: $radioButton")
             Log.e("BActivity", "radioButton2: $radioButton2")
+
+            // "shared preferences" is a way to store data on the device (location: data/data/package_name/shared_prefs)
+            val sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+            // old way
+//            val editor = sp.edit()
+//            editor.putString("name", name)
+//            editor.putInt("age", age ?: 0)
+//            editor.putBoolean("isAdult", isAdult)
+//            editor.putBoolean("isAgree", isAgree)
+//            editor.putBoolean("checkbox", checkbox)
+//            editor.putBoolean("radioButton", radioButton)
+//            editor.putBoolean("radioButton2", radioButton2)
+//            editor.apply()
+
+            // new way
+            sp.edit {
+                putString("name", name)
+                putInt("age", age ?: 0)
+                putBoolean("isAdult", isAdult)
+                putBoolean("isAgree", isAgree)
+                putStringSet("friends", setOf("John", "Jane"))
+            }
+
             startActivity(intent)
         }
 
