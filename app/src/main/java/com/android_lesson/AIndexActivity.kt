@@ -1,9 +1,11 @@
 package com.android_lesson
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityAindexBinding
@@ -24,6 +26,16 @@ class AIndexActivity : AppCompatActivity() {
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
 //            insets
 //        }
+
+
+        // counter
+        val sp = getSharedPreferences("counter", Context.MODE_PRIVATE)
+        var counter = sp.getInt("counter", 0)
+        sp.edit {
+            putInt("counter", ++counter)
+        }
+        viewBinding.textViewCounter.text = "Counter: $counter"
+
 
         // Navigate to a new activity when the button is clicked
         viewBinding.mainGoToA.setOnClickListener {
