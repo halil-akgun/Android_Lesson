@@ -12,6 +12,9 @@ import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.android_lesson.databinding.ActivityBBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class BActivity : AppCompatActivity() {
@@ -141,9 +144,55 @@ class BActivity : AppCompatActivity() {
                 putStringSet("friends", setOf("John", "Jane"))
             }
 
+            //         *****  PREFERENCES DATASTORE  *****
+            // "Preferences DataStore" is a way to store data on the device (location: data/data/package_name/files)
+            val ap = AppPref(this)
+            val job = CoroutineScope(Dispatchers.Main).launch {
+                /*
+                When you use CoroutineScope in two separate classes to access
+                the same DataStore file, it can cause a conflict.
+                DataStore must be a singleton because only one active instance is allowed for a given file.
+                To avoid this, always create a single shared instance of DataStore and
+                access it across your app instead of creating a new one in each class.
+                 */
+
+                // save
+                ap.saveName(name)
+                ap.saveAge(age ?: 0)
+                ap.saveIsAdult(isAdult)
+                ap.saveFriends(setOf("John", "Jane"))
+
+                // read
+                var dsName = ap.getName()
+                var dsAge = ap.getAge()
+                var dsIsAdult = ap.getIsAdult()
+                var dsHeight = ap.getHeight()
+                var dsFriends = ap.getFriends()
+                Log.e("Preferences Datastore", "Name: $dsName")
+                Log.e("Preferences Datastore", "Age: $dsAge")
+                Log.e("Preferences Datastore", "Is Adult: $dsIsAdult")
+                Log.e("Preferences Datastore", "Height: $dsHeight")
+                Log.e("Preferences Datastore", "Friends: $dsFriends")
+
+                // remove
+                ap.deleteName()
+                ap.deleteAge()
+                ap.deleteIsAdult()
+                ap.deleteHeight()
+                ap.deleteFriends()
+                dsName = ap.getName()
+                dsAge = ap.getAge()
+                dsIsAdult = ap.getIsAdult()
+                dsHeight = ap.getHeight()
+                dsFriends = ap.getFriends()
+                Log.e("Preferences Datastore", "Name: $dsName")
+                Log.e("Preferences Datastore", "Age: $dsAge")
+                Log.e("Preferences Datastore", "Is Adult: $dsIsAdult")
+                Log.e("Preferences Datastore", "Height: $dsHeight")
+                Log.e("Preferences Datastore", "Friends: $dsFriends")
+            }
+
             startActivity(intent)
         }
-
-
     }
 }

@@ -57,4 +57,11 @@ dependencies {
     // for navigation component
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // Preferences DataStore
+    implementation(libs.androidx.datastore.preferences)
+    // Lifecycle components & Kotlin Coroutines components
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    api (libs.kotlinx.coroutines.core)
+    api (libs.kotlinx.coroutines.android)
 }
