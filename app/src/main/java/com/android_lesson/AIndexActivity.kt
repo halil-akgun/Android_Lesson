@@ -110,5 +110,9 @@ class AIndexActivity : AppCompatActivity() {
             val intent = Intent(this@AIndexActivity, RActivity::class.java)
             startActivity(intent)
         }
+        viewBinding.mainGoToS.setOnClickListener {
+            val intent = Intent(this@AIndexActivity, SActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
