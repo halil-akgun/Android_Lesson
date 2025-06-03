@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import com.android_lesson.databinding.ActivitySBinding
 
 class SActivity : AppCompatActivity() {
@@ -29,7 +30,11 @@ class SActivity : AppCompatActivity() {
             insets
         }
 
-        loadTable()
+        // load table
+        var db = DbHelper(applicationContext)
+        var persons = DbPersonDAO().getAll(db)
+        db.close()
+        loadTable(persons)
 
         viewBinding.btnAddPerson.setOnClickListener {
             val name = viewBinding.textViewDbAddPersonName.text.toString().trim()
@@ -68,25 +73,35 @@ class SActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val db = DbHelper(applicationContext)
+            db = DbHelper(applicationContext)
             DbPersonDAO().save(db, name, tel, age, height)
-
+            persons = DbPersonDAO().getAll(db)
             db.close()
 
             Toast.makeText(applicationContext, "Added person: $name", Toast.LENGTH_SHORT).show()
 
             // clear form
-//            viewBinding.textViewDbAddPersonName.text.clear()
-//            viewBinding.textViewDbAddPersonTel.text.clear()
-//            viewBinding.textViewDbAddPersonAge.text.clear()
-//            viewBinding.textViewDbAddPersonHeight.text.clear()
+            viewBinding.textViewDbAddPersonName.text.clear()
+            viewBinding.textViewDbAddPersonTel.text.clear()
+            viewBinding.textViewDbAddPersonAge.text.clear()
+            viewBinding.textViewDbAddPersonHeight.text.clear()
 
-            loadTable()
+            loadTable(persons)
         }
+
+        // search
+        viewBinding.textViewDbAddPersonSearch.addTextChangedListener { editable ->
+            val query = editable.toString()
+            db = DbHelper(applicationContext)
+            val filteredPersons = DbPersonDAO().search(db, query)
+            db.close()
+
+            loadTable(filteredPersons)
+        }
+
     }
 
-    private fun loadTable() {
-        val db = DbHelper(applicationContext)
+    private fun loadTable(persons: List<DbPerson> = emptyList()) {
         val table = findViewById<TableLayout>(R.id.tableLayout)
         table.removeAllViews()
 
@@ -102,7 +117,7 @@ class SActivity : AppCompatActivity() {
         table.addView(header)
 
         // rows
-        for (person in DbPersonDAO().getAll(db)) {
+        for (person in persons) {
             val row = TableRow(this)
             listOf(person.name, person.tel, person.age.toString(), person.height.toString()).forEach {
                 val tv = TextView(this)
@@ -117,8 +132,6 @@ class SActivity : AppCompatActivity() {
 
             table.addView(row)
         }
-
-        db.close()
     }
 
     private fun showUpdateDialog(person: DbPerson) {
