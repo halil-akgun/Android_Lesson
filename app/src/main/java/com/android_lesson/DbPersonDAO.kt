@@ -47,6 +47,23 @@ class DbPersonDAO {
         return list
     }
 
+    fun getRandom(dbHelper: DbHelper, count: Int): List<DbPerson> {
+        val list = mutableListOf<DbPerson>()
+        val db = dbHelper.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM person ORDER BY RANDOM() LIMIT $count", null)
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+            val tel = cursor.getString(cursor.getColumnIndexOrThrow("tel"))
+            val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
+            val height = cursor.getDouble(cursor.getColumnIndexOrThrow("height"))
+            list.add(DbPerson(id, name, tel, age, height))
+        }
+        cursor.close()
+        db.close()
+        return list
+    }
+
     fun search(dbHelper: DbHelper, query: String): List<DbPerson> {
         val list = mutableListOf<DbPerson>()
         val db = dbHelper.writableDatabase

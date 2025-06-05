@@ -2,6 +2,7 @@ package com.android_lesson
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TableRow
@@ -33,9 +34,17 @@ class SActivity : AppCompatActivity() {
         // load table
         var db = DbHelper(applicationContext)
         var persons = DbPersonDAO().getAll(db)
-        db.close()
         loadTable(persons)
 
+        // get random person
+        val randomPerson = DbPersonDAO().getRandom(db, 2)
+        for (prs1 in randomPerson) {
+            Log.e("random person", "name: ${prs1.name}, age: ${prs1.age}")
+        }
+
+        db.close()
+
+        // add person
         viewBinding.btnAddPerson.setOnClickListener {
             val name = viewBinding.textViewDbAddPersonName.text.toString().trim()
             val tel = viewBinding.textViewDbAddPersonTel.text.toString().trim()
@@ -119,7 +128,12 @@ class SActivity : AppCompatActivity() {
         // rows
         for (person in persons) {
             val row = TableRow(this)
-            listOf(person.name, person.tel, person.age.toString(), person.height.toString()).forEach {
+            listOf(
+                person.name,
+                person.tel,
+                person.age.toString(),
+                person.height.toString()
+            ).forEach {
                 val tv = TextView(this)
                 tv.text = it
                 tv.setPadding(8, 8, 8, 8)
