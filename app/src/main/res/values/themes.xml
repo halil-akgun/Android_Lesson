@@ -9,6 +9,7 @@
         <item name="windowNoTitle">true</item>
         
         <item name="android:textColor">@color/textColor</item>
+        <item name="colorOnPrimary">@color/textColor</item>
     </style>
 
     <style name="Theme.Android_Lesson" parent="Base.Theme.Android_Lesson" />
