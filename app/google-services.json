@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "67869048577",
+    "project_id": "deneme-school",
+    "storage_bucket": "deneme-school.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67869048577:android:4802bdf34150308b3b6500",
+        "android_client_info": {
+          "package_name": "com.android_lesson"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2yUAgi8tYX50BlGrHwfAacXHfKnlafpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
