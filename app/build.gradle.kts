@@ -66,4 +66,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     api (libs.kotlinx.coroutines.core)
     api (libs.kotlinx.coroutines.android)
+
+    // WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.11.0")
 }

@@ -17,9 +17,11 @@
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
         <activity
-                android:name=".UActivity"
+                android:name=".VActivity"
                 android:exported="false" />
-        <!-- custom notification icon and color -->
+        <activity
+                android:name=".UActivity"
+                android:exported="false" /> <!-- custom notification icon and color -->
         <meta-data
                 android:name="com.google.firebase.messaging.default_notification_icon"
                 android:resource="@drawable/info" />
