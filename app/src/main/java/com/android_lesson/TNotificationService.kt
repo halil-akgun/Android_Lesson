@@ -76,14 +76,15 @@ class TNotificationService: FirebaseMessagingService() {
                 .setContentText(body)
                 .setSmallIcon(R.drawable.baseline_cruelty_free_24)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true) // When the user clicks on the notification, it will be canceled.
+                .setAutoCancel(true) // When the user clicks on the notification, it will be canceled/disappeared.
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
         } else {
             builder = NotificationCompat.Builder(this)
             builder.setContentTitle(title)
                 .setContentText(body)
                 .setSmallIcon(R.drawable.baseline_cruelty_free_24)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true) // When the user clicks on the notification, it will be canceled.
+                .setAutoCancel(true) // When the user clicks on the notification, it will be canceled/disappeared.
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
         }
 

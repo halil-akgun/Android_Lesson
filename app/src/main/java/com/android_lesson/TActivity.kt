@@ -80,14 +80,14 @@ class TActivity : AppCompatActivity() {
                     .setContentText("Content")
                     .setSmallIcon(R.drawable.baseline_cruelty_free_24)
                     .setContentIntent(pendingIntent)
-                    .setAutoCancel(true) // When the user clicks on the notification, it will be canceled.
+                    .setAutoCancel(true) // When the user clicks on the notification, it will be canceled/disappeared.
             } else {
                 builder = NotificationCompat.Builder(this)
                 builder.setContentTitle("Title")
                     .setContentText("Content")
                     .setSmallIcon(R.drawable.baseline_cruelty_free_24)
                     .setContentIntent(pendingIntent)
-                    .setAutoCancel(true) // When the user clicks on the notification, it will be canceled.
+                    .setAutoCancel(true) // When the user clicks on the notification, it will be canceled/disappeared.
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
             }
 
