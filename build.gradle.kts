@@ -4,6 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
 
     // Plugin for generating SafeArgs classes used in Android Navigation Component
-    id("androidx.navigation.safeargs.kotlin") version "2.8.5" apply false
+    id("androidx.navigation.safeargs.kotlin") version "2.9.6" apply false
     alias(libs.plugins.google.gms.google.services) apply false
 }
