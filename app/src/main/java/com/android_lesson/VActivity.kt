@@ -9,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.android_lesson.databinding.ActivityVBinding
 import java.util.concurrent.TimeUnit
@@ -34,9 +36,13 @@ class VActivity : AppCompatActivity() {
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
 
-            val request = OneTimeWorkRequestBuilder<VMyWorker>()
+//            val request = OneTimeWorkRequestBuilder<VMyWorker>()
+//                .setInitialDelay(3, TimeUnit.SECONDS)
+//                .setConstraints(constraints)
+//                .build()
+
+            val request = PeriodicWorkRequestBuilder<VMyWorkerNotification>(15, TimeUnit.MINUTES)
                 .setInitialDelay(3, TimeUnit.SECONDS)
-                .setConstraints(constraints)
                 .build()
 
             WorkManager.getInstance(this).enqueue(request)

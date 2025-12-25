@@ -43,7 +43,7 @@ class TNotificationService: FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             val channelId = "channelId"
-            val channelName = "Channel Name"
+            val channelName = "Channel Name" // appears in the notification settings
             val channelDescription = "Channel Description"
             val channelImportance = NotificationManager.IMPORTANCE_HIGH
 
