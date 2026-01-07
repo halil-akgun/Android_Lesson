@@ -27,7 +27,7 @@
             android:layout_marginEnd="177dp"
             android:text="Form"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="55sp"
+            android:textSize="53sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
