@@ -68,5 +68,8 @@ dependencies {
     api (libs.kotlinx.coroutines.android)
 
     // WorkManager
-    implementation("androidx.work:work-runtime-ktx:2.11.0")
+    implementation(libs.androidx.work.runtime.ktx)
+
+    // Volley
+    implementation(libs.volley)
 }
