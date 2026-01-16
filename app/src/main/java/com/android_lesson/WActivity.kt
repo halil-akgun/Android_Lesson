@@ -20,6 +20,7 @@ import org.json.JSONObject
 class WActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWBinding
+    private val allTodos = mutableListOf<Todo>()
     private val todos = mutableListOf<Todo>()
     private lateinit var adapter: WTodoAdapter
 
@@ -43,6 +44,15 @@ class WActivity : AppCompatActivity() {
         binding.btnAddTodo.setOnClickListener {
             showAddTodoDialog()
         }
+
+        // Search
+        binding.volleySearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                searchTodo(s?.toString() ?: "")
+            }
+        })
     }
 
     private fun setupRecyclerView() {
@@ -61,19 +71,23 @@ class WActivity : AppCompatActivity() {
     private fun fetchTodos() {
         val url = "https://6538c6baa543859d1bb1e611.mockapi.io/todos"
 
-        val request = JsonArrayRequest(Request.Method.GET, url, null,
+        val request = JsonArrayRequest(
+            Request.Method.GET, url, null,
             { response ->
+                allTodos.clear()
                 todos.clear()
+
                 for (i in 0 until response.length()) {
                     val obj = response.getJSONObject(i)
-                    todos.add(
-                        Todo(
-                            obj.getString("id"),
-                            obj.getString("message"),
-                            obj.getBoolean("completed")
-                        )
+                    val todo = Todo(
+                        obj.getString("id"),
+                        obj.getString("message"),
+                        obj.getBoolean("completed")
                     )
+                    allTodos.add(todo)
+                    todos.add(todo)
                 }
+
                 adapter.notifyDataSetChanged()
             },
             { error -> error.printStackTrace() }
@@ -126,7 +140,8 @@ class WActivity : AppCompatActivity() {
             put("completed", false) // ✅ default false
         }
 
-        val request = JsonObjectRequest(Request.Method.POST, url, body,
+        val request = JsonObjectRequest(
+            Request.Method.POST, url, body,
             { response ->
                 // Add locally without refetch
                 todos.add(Todo(response.getString("id"), message, false))
@@ -147,7 +162,8 @@ class WActivity : AppCompatActivity() {
             put("completed", todo.completed)
         }
 
-        val request = JsonObjectRequest(Request.Method.PUT, url, body,
+        val request = JsonObjectRequest(
+            Request.Method.PUT, url, body,
             {
                 val index = todos.indexOfFirst { it.id == todo.id }
                 if (index != -1) adapter.notifyItemChanged(index) // ✅ smooth update
@@ -162,7 +178,8 @@ class WActivity : AppCompatActivity() {
     private fun deleteTodo(todo: Todo) {
         val url = "https://6538c6baa543859d1bb1e611.mockapi.io/todos/${todo.id}"
 
-        val request = JsonObjectRequest(Request.Method.DELETE, url, null,
+        val request = JsonObjectRequest(
+            Request.Method.DELETE, url, null,
             {
                 val index = todos.indexOf(todo)
                 if (index != -1) {
@@ -174,6 +191,17 @@ class WActivity : AppCompatActivity() {
         )
 
         VolleyClient.getQueue(this).add(request)
+    }
+
+    private fun searchTodo(query: String) {
+        val filteredTodos = if (query.isEmpty()) {
+            allTodos // Show all todos if query is empty
+        } else {
+            allTodos.filter { it.message.contains(query, ignoreCase = true) }
+        }
+
+        // Update adapter with filtered results
+        adapter.updateTodos(filteredTodos)
     }
 }
 

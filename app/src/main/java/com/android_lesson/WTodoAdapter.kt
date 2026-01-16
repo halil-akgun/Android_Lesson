@@ -47,4 +47,10 @@ class WTodoAdapter(
     }
 
     override fun getItemCount(): Int = todos.size
+
+    fun updateTodos(newTodos: List<Todo>) {
+        todos.clear()
+        todos.addAll(newTodos)
+        notifyDataSetChanged()
+    }
 }
