@@ -64,12 +64,16 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     // Lifecycle components & Kotlin Coroutines components
     implementation(libs.androidx.lifecycle.livedata.ktx)
-    api (libs.kotlinx.coroutines.core)
-    api (libs.kotlinx.coroutines.android)
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.android)
 
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)
 
     // Volley
     implementation(libs.volley)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson)
 }
