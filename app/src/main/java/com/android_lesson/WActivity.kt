@@ -24,6 +24,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -322,9 +323,11 @@ interface TodoApi {
     suspend fun getAllTodos(): List<Todo>
 
     @POST("todos")
+    @FormUrlEncoded // Ensures proper encoding for special (non-ASCII) characters (e.g. Turkish characters)
     suspend fun addTodo(@Body todo: Todo): Todo
 
     @PUT("todos/{id}")
+    @FormUrlEncoded // Ensures proper encoding for special (non-ASCII) characters (e.g. Turkish characters)
     suspend fun updateTodo(
         @Path("id") id: String,
         @Body todo: Todo
