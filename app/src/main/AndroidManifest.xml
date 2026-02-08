@@ -17,9 +17,11 @@
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
         <activity
-                android:name=".WActivity"
+                android:name=".YActivity"
                 android:exported="false" />
-        <!--         android:usesCleartextTraffic="true" allows your app to use unencrypted (HTTP) network traffic. -->
+        <activity
+                android:name=".WActivity"
+                android:exported="false" /> <!-- android:usesCleartextTraffic="true" allows your app to use unencrypted (HTTP) network traffic. -->
         <activity
                 android:name=".VActivity"
                 android:exported="false" />
