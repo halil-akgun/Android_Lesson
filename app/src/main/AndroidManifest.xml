@@ -17,6 +17,12 @@
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
         <activity
+                android:name=".Z1Activity"
+                android:exported="false" />
+        <activity
+                android:name=".ZActivity"
+                android:exported="false" />
+        <activity
                 android:name=".YActivity"
                 android:exported="false" />
         <activity
