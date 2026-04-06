@@ -81,4 +81,7 @@ dependencies {
 
     // Picasso
     implementation(libs.picasso)
+
+    // Location
+    implementation(libs.play.services.location)
 }

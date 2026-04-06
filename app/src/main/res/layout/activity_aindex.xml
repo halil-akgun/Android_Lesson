@@ -80,6 +80,12 @@
                     android:id="@+id/mainGoToE" />
 
             <Button
+                    android:text="L - SnackBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mainGoToL" />
+
+            <Button
                     android:text="F - NavigationView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -114,12 +120,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/mainGoToK" />
-
-            <Button
-                    android:text="L - SnackBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/mainGoToL" />
 
             <Button
                     android:text="M - Dark Mode"
@@ -198,6 +198,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/mainGoToZ1" />
+
+            <Button
+                    android:text="Z2 - Location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mainGoToZ2" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
