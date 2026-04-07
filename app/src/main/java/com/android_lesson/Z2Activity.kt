@@ -55,7 +55,7 @@ class Z2Activity : AppCompatActivity() {
     }
 
     fun getLocation() {
-        locationTask.addOnSuccessListener { it ->
+        locationTask.addOnSuccessListener {
             if (it != null) {
                 viewBinding.textViewLocationLatitude.text =
                     getString(R.string.latitude_format, it.latitude)
