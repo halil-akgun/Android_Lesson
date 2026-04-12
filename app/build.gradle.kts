@@ -11,9 +11,10 @@ android {
     namespace = "com.android_lesson"
     compileSdk = 35
 
-    // Enable view binding
+    // Enable view binding and data binding
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {

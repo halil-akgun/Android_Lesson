@@ -48,8 +48,6 @@ class Z2Activity : AppCompatActivity() {
                     arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                     100
                 )
-            } else {
-
             }
         }
     }
