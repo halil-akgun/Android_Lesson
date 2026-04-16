@@ -2,6 +2,7 @@ package com.android_lesson
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,6 +16,9 @@ class Z3Activity : AppCompatActivity() {
 
     // DataBinding
     private lateinit var dataBinding: ActivityZ3Binding
+
+    // ViewModel
+    private val viewModel: Z03ViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,24 +56,35 @@ class Z3Activity : AppCompatActivity() {
 
         // DataBinding way
 //        dataBinding.textViewMVVMResult.text = "0"
-        dataBinding.result = "0" // result variable is used in XML
+//        dataBinding.result = "0" // result variable is used in XML
         // fun buttonAdd()
         // fun buttonMul()
+
+        // LiveData
+        viewModel.result.observe(this) { result ->
+            dataBinding.result = result
+        }
     }
 
     fun buttonAdd() {
         val number1 = dataBinding.editTextMVVMNumber1.text.toString().toInt()
         val number2 = dataBinding.editTextMVVMNumber2.text.toString().toInt()
-        val result = number1 + number2
+//        val result = number1 + number2
 //        dataBinding.textViewMVVMResult.text = result.toString()
-        dataBinding.result = result.toString() // result variable is used in XML
+//        dataBinding.result = result.toString() // result variable is used in XML
+
+        viewModel.add(number1, number2)
+//        dataBinding.result = viewModel.result // not needed, LiveData is used
     }
 
     fun buttonMul() {
         val number1 = dataBinding.editTextMVVMNumber1.text.toString().toInt()
         val number2 = dataBinding.editTextMVVMNumber2.text.toString().toInt()
-        val result = number1 * number2
+//        val result = number1 * number2
 //        dataBinding.textViewMVVMResult.text = result.toString()
-        dataBinding.result = result.toString() // result variable is used in XML
+//        dataBinding.result = result.toString() // result variable is used in XML
+
+        viewModel.mul(number1, number2)
+//        dataBinding.result = viewModel.result // not needed, LiveData is used
     }
 }

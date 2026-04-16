@@ -46,7 +46,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -85,4 +84,9 @@ dependencies {
 
     // Location
     implementation(libs.play.services.location)
+
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // lifecycleCompiler
+    implementation(libs.lifecycleCompiler)
 }
