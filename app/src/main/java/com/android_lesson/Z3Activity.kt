@@ -18,7 +18,7 @@ class Z3Activity : AppCompatActivity() {
     private lateinit var dataBinding: ActivityZ3Binding
 
     // ViewModel
-    private val viewModel: Z03ViewModel by viewModels()
+    private val viewModel: Z3ViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,7 @@
 [versions]
 agp = "9.1.1"
 datastorePreferences = "1.1.7"
-kotlin = "2.2.21"
+kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -23,6 +23,8 @@ recyclerview = "1.4.0"
 picasso = "2.71828"
 play-services-location = "21.3.0"
 lifecycleViewModel = "2.10.0"
+room = "2.7.0-alpha13"
+ksp = "2.1.0-1.0.29"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,9 +52,13 @@ picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "pic
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-location" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewModel" }
 lifecycleCompiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleViewModel" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleViewModel" }
+androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

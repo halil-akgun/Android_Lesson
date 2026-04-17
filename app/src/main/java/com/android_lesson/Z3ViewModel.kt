@@ -3,7 +3,7 @@ package com.android_lesson
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class Z03ViewModel : ViewModel() {
+class Z3ViewModel : ViewModel() {
 
 //    var result = "0"
     var result = MutableLiveData<String>()

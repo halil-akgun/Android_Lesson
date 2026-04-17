@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.devtools.ksp)
 
     // Plugin for generating SafeArgs classes used in Android Navigation Component
     id("androidx.navigation.safeargs.kotlin")
@@ -89,4 +90,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // lifecycleCompiler
     implementation(libs.lifecycleCompiler)
+
+    // Room
+    implementation(libs.androidx.room)
+    // Room compiler
+    ksp(libs.androidx.room.compiler)
+    // lifecycle runtime
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }
