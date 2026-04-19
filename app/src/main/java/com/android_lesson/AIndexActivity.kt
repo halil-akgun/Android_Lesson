@@ -157,5 +157,10 @@ class AIndexActivity : AppCompatActivity() {
             val intent = Intent(this@AIndexActivity, Z4Activity::class.java)
             startActivity(intent)
         }
+
+        viewBinding.mainGoToZ5.setOnClickListener {
+            val intent = Intent(this@AIndexActivity, Z5Activity::class.java)
+            startActivity(intent)
+        }
     }
 }

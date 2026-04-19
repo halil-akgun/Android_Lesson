@@ -97,4 +97,8 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     // lifecycle runtime
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // Dagger
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 }
